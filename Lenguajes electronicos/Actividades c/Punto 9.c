@@ -1,7 +1,5 @@
-//  9.	Desarrolla un algoritmo que permita leer 2 valores y emitir por pantalla la suma de los dos,
-//   la resta, producto, división, promedio y el doble producto del primero menos la mitad del segundo. 
-
 #include <stdio.h>
+#include <stdio_ext.h>
 
 int main(){
     float numero1;
@@ -16,7 +14,7 @@ int main(){
         scanf("%f", &numero1);
         scanf("\n%f", &numero2);
         __fpurge(stdin);
-        printf("ingresa la operacion");
+        printf("ingresa la operacion\n");
         printf("(+) - suma\n");
         printf("(-) - resta\n");
         printf("(*) - multiplicacion\n");
@@ -47,7 +45,7 @@ int main(){
         }else if (operacion == 'P'){
             resultado = numero1 * numero1 - numero2 / 2;
         }
-        if(!(operacion == '/') && (numero2 == '0')){
+        if(!((operacion == '/') && (numero2 == 0))){
             printf("el resultado es: %f\n", resultado);
         }
         printf("(0) - apagar\n");
