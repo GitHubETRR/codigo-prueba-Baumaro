@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+void bienvenida();
+bool EsPrimo(int);
+
+int main() {
+    int apagar = 1; 
+    int Num;
+
+    bienvenida();
+    while(apagar != 0) {
+        scanf("%d", &Num); 
+        if (EsPrimo(Num)) {
+            printf("%i es primo\n", Num);
+        } else {
+            printf("%i no es primo\n", Num);
+        }
+        printf("Si quiere dejar de ingresar números ingrese un (0), de lo contrario ingrese otro número:\n");
+        scanf("%i", &apagar);
+    }
+
+    return 0;
+}
+
+void bienvenida(void) {
+    printf("Bienvenido al programa de detección de números primos\n");
+    printf("Ingrese un número:\n");
+}
+
+bool EsPrimo(int Num) {
+    if (Num <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i <= sqrt(Num); i++) {
+        if (Num % i == 0) {
+            return false; 
+        }
+    }
+    
+    return true;  
+}
