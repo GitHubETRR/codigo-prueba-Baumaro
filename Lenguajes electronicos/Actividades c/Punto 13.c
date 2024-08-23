@@ -1,6 +1,6 @@
 //  13.	Construye un programa que dados el valor de 1 kg de determinada
 //       mercadería y la cantidad mercadería comprada, emite el valor del total a pagar.
-
+#include <stdio.h>
 int main(){
     int precio;
     float precioPorKilo;
