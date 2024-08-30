@@ -11,24 +11,24 @@
 #define CANT_PIEZAS 32
 
 #define VACIO ' '
-#define PEON_BLANCO 0x2659
-#define CABALLO_BLANCO 0x2655
-#define ALFIL_BLANCO 0x2658
-#define TORRE_BLANCO 0x2656
-#define REINA_BLANCO 0x2657
-#define REY_BLANCO 0x2654
+#define PEON_BLANCO 0x265F
+#define CABALLO_BLANCO 0x265E
+#define ALFIL_BLANCO 0x265D
+#define TORRE_BLANCO 0x265C
+#define REINA_BLANCO 0x265B
+#define REY_BLANCO 0x265A
 
-#define PEON_NEGRO 0x265A
-#define CABALLO_NEGRO 0x265B
-#define ALFIL_NEGRO 0x265C
-#define TORRE_NEGRO 0x265D
-#define REINA_NEGRO 0x265E
-#define REY_NEGRO 0x265F
+#define PEON_NEGRO 0x2659
+#define CABALLO_NEGRO 0x2658
+#define ALFIL_NEGRO 0x2657
+#define TORRE_NEGRO 0x2656
+#define REINA_NEGRO 0x2655
+#define REY_NEGRO 0x2654
 
 
 
-void reset(int tablero[8][8]);
-void mov_peon(int tablero[8][8]);
+void reset(wchar_t tablero[8][8]);
+void mov_peon(wchar_t tablero[8][8]);
 
 int main(void){
     setlocale(LC_CTYPE, "");
@@ -36,7 +36,7 @@ int main(void){
     int Juego;
     int turnos, For_2, For_3;
     wprintf(L"bienvenido a AJEDREZ CON BAUMARO\n");
-    wprintf(L"desea iniciar el juego \n(1) - si \n(0) - no\n");
+    wprintf(L"desea iniciar el juego? \n(1) - si \n(0) - no\n");
     scanf("%d", &Juego);
     wchar_t tablero[8][8];
     reset(tablero);
@@ -44,21 +44,18 @@ int main(void){
         turnos++;
         for(For_2 = 0; For_2 < 8; For_2++){
             for(For_3 = 0; For_3 < 8; For_3++) {
-                setlocale(LC_CTYPE, "");
-                int a=0x2657;
-                wprintf(L" %lc ",tablero[For_2][For_3]);
-            }
+                wprintf(L"  %lc   ",tablero[For_2][For_3]);
+            }                              
             wprintf(L"\n");
         }
         wprintf(L"ingrese la casilla de la pieza que quiere mover\n");
         scanf("%d\n", &casilla_Mov_x);
         scanf("%d", &casilla_Mov_y);
-        printf("%d", tablero[casilla_Mov_y][casilla_Mov_x]);
         return 0;
     }
 }
 
-void reset(int tablero[8][8]) {
+void reset(wchar_t tablero[8][8]) {
     int i, j;
 
     // Inicializar el tablero vacío
@@ -98,5 +95,4 @@ void reset(int tablero[8][8]) {
     tablero[7][3] = REINA_NEGRO;
     tablero[7][4] = REY_NEGRO;
 }
-
 
