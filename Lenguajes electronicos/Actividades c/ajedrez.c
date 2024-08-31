@@ -26,15 +26,15 @@
 #define REY_NEGRO 0x2654
 
 
-
+void imprimir_tablero(wchar_t tablero[8][8]);
 void reset(wchar_t tablero[8][8]);
-void mov_peon(wchar_t tablero[8][8]);
+void mov_peon(wchar_t tablero[8][8], casilla_Mov_y, casilla_Mov_x);
 
 int main(void){
     setlocale(LC_CTYPE, "");
     int casilla_Mov_x, casilla_Mov_y;
     int Juego;
-    int turnos, For_2, For_3;
+    int turnos;
     wprintf(L"bienvenido a AJEDREZ CON BAUMARO\n");
     wprintf(L"desea iniciar el juego? \n(1) - si \n(0) - no\n");
     scanf("%d", &Juego);
@@ -42,20 +42,32 @@ int main(void){
     reset(tablero);
     while(Juego == 1){
         turnos++;
-        for(For_2 = 0; For_2 < 8; For_2++){
-            for(For_3 = 0; For_3 < 8; For_3++) {
-                wprintf(L"  %lc   ",tablero[For_2][For_3]);
-            }                              
-            wprintf(L"\n");
-        }
+        imprimir_tablero(tablero);
         wprintf(L"ingrese la casilla de la pieza que quiere mover\n");
         scanf("%d\n", &casilla_Mov_x);
         scanf("%d", &casilla_Mov_y);
-        return 0;
+        if((tablero[casilla_Mov_y][casilla_Mov_x] == PEON_BLANCO) && ){
+
+        }
+    }
+    return 0;
+}
+
+
+void imprimir_tablero(wchar_t tablero[8][8]){
+    
+    int For_2, For_3;
+    
+    for(For_2 = 0; For_2 < 8; For_2++){
+        for(For_3 = 0; For_3 < 8; For_3++) {
+            wprintf(L"  %lc   ",tablero[For_2][For_3]);
+        }                              
+        wprintf(L"\n");
     }
 }
 
 void reset(wchar_t tablero[8][8]) {
+    
     int i, j;
 
     // Inicializar el tablero vacío
@@ -94,5 +106,30 @@ void reset(wchar_t tablero[8][8]) {
     tablero[0][4] = REY_BLANCO;
     tablero[7][3] = REINA_NEGRO;
     tablero[7][4] = REY_NEGRO;
+}
+
+void mov_peon(wchar_t tablero[8][8], casilla_Mov_y, casilla_Mov_x){
+    int comer, comer_direccion;
+    if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] != " " ) || (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] != " " )) && (((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2659 )) || ((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2659 ))))
+    {
+        wprintf(L"desea comer? \n(1) - si \n(0) - no");
+        scanf("%d", &comer);
+        if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2659 )) && (comer == 1)) 
+        {
+            wprintf(L"(1) - comer derecha \n(0) - no");
+            scanf("%d", &comer_direccion);
+        }else if(((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2659 )) && (comer == 1))
+        {
+            wprintf(L"(1) - comer izquierda \n(0) - no");
+            scanf("%d", &comer_direccion);
+            if (comer_direccion == 1)
+            {
+                tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] = tablero[casilla_Mov_y][casilla_Mov_x]
+                tablero[casilla_Mov_y][casilla_Mov_x] = " "
+            }
+            
+        }
+    }
+    
 }
 
