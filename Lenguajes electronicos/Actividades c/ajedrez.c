@@ -28,7 +28,7 @@
 
 void imprimir_tablero(wchar_t tablero[8][8]);
 void reset(wchar_t tablero[8][8]);
-void mov_peon(wchar_t tablero[8][8], casilla_Mov_y, casilla_Mov_x);
+void mov_peon(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x);
 
 int main(void){
     setlocale(LC_CTYPE, "");
@@ -46,11 +46,10 @@ int main(void){
         wprintf(L"ingrese la casilla de la pieza que quiere mover\n");
         scanf("%d\n", &casilla_Mov_x);
         scanf("%d", &casilla_Mov_y);
-        if((tablero[casilla_Mov_y][casilla_Mov_x] == PEON_BLANCO) && ){
-
+        if((tablero[casilla_Mov_y][casilla_Mov_x] == PEON_BLANCO)){
+            mov_peon(tablero, casilla_Mov_y, casilla_Mov_x);
         }
     }
-    return 0;
 }
 
 
@@ -108,8 +107,8 @@ void reset(wchar_t tablero[8][8]) {
     tablero[7][4] = REY_NEGRO;
 }
 
-void mov_peon(wchar_t tablero[8][8], casilla_Mov_y, casilla_Mov_x){
-    int comer, comer_direccion;
+void mov_peon(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x){
+    int comer, comer_direccion, mover_2_casillas;
     if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] != " " ) || (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] != " " )) && (((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > 0x2659 )) || ((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2654 ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > 0x2659 ))))
     {
         wprintf(L"desea comer? \n(1) - si \n(0) - no");
@@ -124,12 +123,28 @@ void mov_peon(wchar_t tablero[8][8], casilla_Mov_y, casilla_Mov_x){
             scanf("%d", &comer_direccion);
             if (comer_direccion == 1)
             {
-                tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] = tablero[casilla_Mov_y][casilla_Mov_x]
-                tablero[casilla_Mov_y][casilla_Mov_x] = " "
+                tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] = tablero[casilla_Mov_y][casilla_Mov_x];
+                tablero[casilla_Mov_y][casilla_Mov_x] = " ";
             }
             
         }
     }
+    if ((comer != 1) && (((casilla_Mov_x > 0) && (casilla_Mov_x < 8)) && (casilla_Mov_y == 1)))
+    {
+        wprintf(L"desea mover dos casillas? \n(1) - si \n(0) - no\n");
+        scanf("%d", &mover_2_casillas);
+        if (mover_2_casillas == 1)
+        {
+            tablero[casilla_Mov_y + 2][casilla_Mov_x] = tablero[casilla_Mov_y][casilla_Mov_x];
+            tablero[casilla_Mov_y][casilla_Mov_x] = " ";
+            mover_2_casillas = 0;
+        }
+    }
     
+    if ((comer != 1) && (mover_2_casillas != 1))
+    {
+        tablero[casilla_Mov_y + 1][casilla_Mov_x] = tablero[casilla_Mov_y][casilla_Mov_x];
+        tablero[casilla_Mov_y][casilla_Mov_x] = " ";
+    }
 }
 
