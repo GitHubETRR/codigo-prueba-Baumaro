@@ -49,7 +49,6 @@ int main(void){
         if((tablero[casilla_Mov_y][casilla_Mov_x] == PEON_BLANCO)){
             mov_peon(tablero, casilla_Mov_y, casilla_Mov_x);
         }
-        wprintf(L"%x", tablero[7][6]);
     }
 }
 
@@ -112,17 +111,22 @@ void reset(wchar_t tablero[8][8]) {
 
 void mov_peon(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x){
     int comer, comer_direccion, mover_2_casillas = 0;
-    if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] != ' ' ) || (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] != ' ' )) && (((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > PEON_NEGRO )) || ((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > PEON_NEGRO ))))
+    if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] != ' ' ) || (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] != ' ' )) && (((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] >= REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] >= PEON_NEGRO )) || ((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] >= REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] >= PEON_NEGRO ))))
     {
-        wprintf(L"desea comer? \n(1) - si \n(0) - no");
+        wprintf(L"desea comer? \n(1) - si \n(0) - no\n");
         scanf("%d", &comer);
-        if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] > PEON_NEGRO )) && (comer == 1)) 
+        if(((tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] >= REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] >= PEON_NEGRO )) && (comer == 1)) 
         {
-            wprintf(L"(1) - comer derecha \n(0) - no");
+            wprintf(L"(1) - comer derecha \n(0) - no\n");
             scanf("%d", &comer_direccion);
-        }else if(((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] > PEON_NEGRO )) && (comer == 1))
+            if (comer_direccion == 1)
+            {
+                tablero[casilla_Mov_y + 1][casilla_Mov_x + 1] = tablero[casilla_Mov_y][casilla_Mov_x];
+                tablero[casilla_Mov_y][casilla_Mov_x] = ' ';
+            }
+        }else if(((tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] >= REY_NEGRO ) && (tablero[casilla_Mov_y + 1][casilla_Mov_x - 1] >= PEON_NEGRO )) && (comer == 1))
         {
-            wprintf(L"(1) - comer izquierda \n(0) - no");
+            wprintf(L"(1) - comer izquierda \n(0) - no\n");
             scanf("%d", &comer_direccion);
             if (comer_direccion == 1)
             {
