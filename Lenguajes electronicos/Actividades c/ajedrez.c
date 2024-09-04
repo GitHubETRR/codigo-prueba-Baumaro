@@ -56,11 +56,25 @@ int main(void){
 void imprimir_tablero(wchar_t tablero[8][8]){
     
     int For_2, For_3;
-    
+    int color_columna, color_fila = 0;
     for(For_2 = 0; For_2 < 8; For_2++){
-        for(For_3 = 0; For_3 < 8; For_3++) {
-            wprintf(L"  %lc   ",tablero[For_2][For_3]);
-        }                              
+        color_columna++;
+        color_fila = 0;
+        for(For_3 = 0; For_3 < 8; For_3++){
+            color_fila++;
+            if(((color_columna % 2) == 0) && ((color_fila % 2) == 0)){
+                wprintf(L"\033[37;7m  %lc   \033[0m",tablero[For_2][For_3]);
+            }
+            if(((color_columna % 2) == 0) && ((color_fila % 2) != 0)){
+                wprintf(L"\033[31;7m  %lc   \033[0m",tablero[For_2][For_3]);
+            }
+            if(((color_columna % 2) != 0) && ((color_fila % 2) == 0)){
+                wprintf(L"\033[31;7m  %lc   \033[0m",tablero[For_2][For_3]);
+            }
+            if(((color_columna % 2) != 0) && ((color_fila % 2) != 0)){
+                wprintf(L"\033[37;7m  %lc   \033[0m",tablero[For_2][For_3]);
+            }
+        }
         wprintf(L"\n");
     }
 }
@@ -154,5 +168,4 @@ void mov_peon(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x){
         tablero[casilla_Mov_y][casilla_Mov_x] = ' ';
     }
 }
-
 
