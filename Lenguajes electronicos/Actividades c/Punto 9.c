@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio_ext.h>
 
 int main(){
     float numero1;
@@ -13,7 +12,7 @@ int main(){
         printf("ingresa los dos numeros\n");
         scanf("%f", &numero1);
         scanf("\n%f", &numero2);
-        __fpurge(stdin);
+        fflush(stdin);
         printf("ingresa la operacion\n");
         printf("(+) - suma\n");
         printf("(-) - resta\n");
@@ -23,7 +22,7 @@ int main(){
         printf("(P) - doble producto * la mitad del segundo\n");
         do{
             scanf("%c", &operacion);
-            __fpurge(stdin);
+            fflush(stdin);
             if (!((operacion == '+') || (operacion == '-') || (operacion == '*') || (operacion == '/') || (operacion == 'p') || (operacion == 'P'))){
                 printf("ingrese un valor valido\n");
             }
