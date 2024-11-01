@@ -12,7 +12,7 @@ typedef struct{
     const atq;
     const def;
     const vel;
-    const daniocrit;
+    int daniocrit;
     const probcrit;
     const evacion;
     int x_evacion;
@@ -46,6 +46,9 @@ int main(){
     int caracteristicas = 0; 
     int numero_aleatorio_evadir;
     int numero_aleatorio_golpecrit;
+    int numero_de_respaldo_gp;
+    int evadir = 1;
+    
     srand(time(NULL));
     
     personaje_t azukita = {"AZUKITA","Azukita es un hombre de unos 40 años, el cual tiene mucho dinero y mucho odio con la sociedad. Con su carisma y su astucia, logro construir un imperio azucarero. En su pasado hizo negocios con el padre de Misil, el cual luego de una pelea, termino muerto.",1,1,1,1,1,1,1,1,1,1,1,1,{"Cañon T.U 551","ataque","golpea con un cañon de azucar en polvo",100},{"Pico de glucosa","pincha a sus enemigos con un pico de azucar aumentando su nivel de azucar en sangre","ataque"},{},{},{},{}};
@@ -102,7 +105,7 @@ int main(){
             info(azukita, misil);
             caracteristicas = 0;
         }
-        if (strcmp(personaje_1, azukita.nombre) == 0)
+        if (strcmp(personaje_1, azukita.nombre) == 0) // si azukita es el personaje_1 
         {
             if(strcmp(personaje_2, misil.nombre) == 0){
                 printf("Jugador 1 ingrese el nombre del movimiento que desea usar");
@@ -111,21 +114,184 @@ int main(){
                 {
                     numero_aleatorio_evadir = rand() % 100 + 1;
                     numero_aleatorio_golpecrit = rand() % 100 + 1;
-                    if ()
+                    if (numero_aleatorio_evadir > (azukita.mov_1.presicion / 10 + misil.evacion * misil.x_evacion / 2))
                     {
-                        /* code */
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
                     }
                     
-                    misil.vida = misil.vida - ((azukita.mov_1.potencia + azukita.atq * azukita.x_atq)/(misil.def * misil.x_def))
+                    
+                    misil.vida = misil.vida - (((azukita.mov_1.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_1.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
                 }else if (strcmp(movimiento_actual, azukita.mov_2.nombre) == 0){
-            
+
+                    numero_aleatorio_evadir = rand() % 100 + 1;
+                    numero_aleatorio_golpecrit = rand() % 100 + 1;
+
+                    if (numero_aleatorio_evadir > (azukita.mov_2.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
+                    }
+                    
+                    
+                    misil.vida = misil.vida - (((azukita.mov_2.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_2.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
                 }else if (strcmp(movimiento_actual, azukita.mov_3.nombre) == 0){
+
+                    numero_aleatorio_evadir = rand() % 100 + 1;
+                    numero_aleatorio_golpecrit = rand() % 100 + 1;
+
+                    if (numero_aleatorio_evadir > (azukita.mov_3.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
+                    }
+                    
+                    
+                    misil.vida = misil.vida - (((azukita.mov_3.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_3.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
 
                 }else if (strcmp(movimiento_actual, azukita.mov_4.nombre) == 0){
 
+                    numero_aleatorio_evadir = rand() % 100 + 1;
+                    numero_aleatorio_golpecrit = rand() % 100 + 1;
+
+                    if (numero_aleatorio_evadir > (azukita.mov_4.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
+                    }
+                    
+                    
+                    misil.vida = misil.vida - (((azukita.mov_4.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_4.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
+
                 }else if (strcmp(movimiento_actual, azukita.mov_5.nombre) == 0){
 
+                    numero_aleatorio_evadir = rand() % 100 + 1;
+                    numero_aleatorio_golpecrit = rand() % 100 + 1;
+
+                    if (numero_aleatorio_evadir > (azukita.mov_5.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
+                    }
+                    
+                    
+                    misil.vida = misil.vida - (((azukita.mov_5.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_5.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
+
                 }else if (strcmp(movimiento_actual, azukita.mov_6.nombre) == 0){
+
+                    numero_aleatorio_evadir = rand() % 100 + 1;
+                    numero_aleatorio_golpecrit = rand() % 100 + 1;
+
+                    if (numero_aleatorio_evadir > (azukita.mov_6.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 0;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        numero_de_respaldo_gp = azukita.daniocrit;
+                        azukita.daniocrit = 1;
+                    }
+                    
+                    
+                    misil.vida = misil.vida - (((azukita.mov_6.potencia + azukita.atq * azukita.x_atq * azukita.daniocrit)* evadir)/(misil.def * misil.x_def));
+
+                    if (numero_aleatorio_evadir > (azukita.mov_6.presicion / 10 + misil.evacion * misil.x_evacion / 2))
+                    {
+                        evadir = 1;
+                    }
+
+                    if (numero_aleatorio_golpecrit > azukita.probcrit)
+                    {
+                        azukita.daniocrit = numero_de_respaldo_gp;
+                        numero_de_respaldo_gp = 1;
+                    }
+
 
                 }else{
                     printf("no introduciste un movimiento valido, pierdes el turno");
