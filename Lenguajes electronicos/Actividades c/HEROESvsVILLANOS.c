@@ -3,12 +3,20 @@
 #include <stdlib.h>
 #include <time.h>
 
-void bienvenida(void); 
-void info(personaje_t Jugador_1, personaje_t Jugador_2);
+
+typedef struct{
+    char nombre[10];
+    char tipo[10];
+    char descripcion[50];
+    int potencia;
+    int curacion;
+    int presicion;
+}mov_t;
+
 
 typedef struct{
     char nombre[20];
-    char historia[700];
+    char historia[500];
     int vida;
     int atq;
     int def;
@@ -28,14 +36,9 @@ typedef struct{
     mov_t mov_6;
 }personaje_t;
 
-typedef struct{
-    char nombre[10];
-    char tipo[10];
-    char descripcion[50];
-    int potencia;
-    int curacion;
-    int presicion;
-}mov_t;
+void lista_personajes(void);
+void bienvenida(void); 
+void info(personaje_t Jugador_1, personaje_t Jugador_2);
 
 int main(){
     char personaje_1[10];
@@ -51,18 +54,18 @@ int main(){
     
     srand(time(NULL));
     
-    personaje_t azukita = {"AZUKITA","Azukita es un hombre de unos 40 años, el cual tiene mucho dinero y mucho odio con la sociedad. Con su carisma y su astucia, logro construir un imperio azucarero. En su pasado hizo negocios con el padre de Misil, el cual luego de una pelea, termino muerto.",1,1,1,1,1,1,1,1,1,1,1,{"Cañon T.U 551","ataque","golpea con un cañon de azucar en polvo",100},{"Pico de glucosa","pincha a sus enemigos con un pico de azucar aumentando su nivel de azucar en sangre","ataque"},{},{},{},{}};
+    personaje_t azukita = {"AZUKITA","Azukita es un hombre de unos 40 años, el cual tiene mucho dinero y mucho odio con la sociedad. Con su carisma y su astucia, logro construir un imperio azucarero. En su pasado hizo negocios con el padre de Misil, el cual luego de una pelea, termino muerto.",1,1,1,1,1,1,1,1,1,1,1,{"Cañon T.U 551","ATAQUE","golpea con un cañon de azucar en polvo",100 , 0, 80},{"Pico de glucosa","ATAQUE","pincha a sus enemigos con un pico de azucar aumentando su nivel de azucar en sangre",60,0,90},{"Aumento de dealers","DEFENSA","se duplica y aumenta la cantidad de dealers que tiene, aumenta la evacion y cura",0,40,85},{},{},{}};
     personaje_t misil = {"MISIL","Misil es un hombre joven, de unos 28 años, con cabello rubio platinado dándole un aspecto retro y agresivo. Está completamente musculoso, con una masa corporal enorme debido a su adicción al gimnasio y al uso excesivo de sustancias, lo que lo hace ver más grande de lo normal. Vive bajo la idea de que el físico perfecto lo es todo, y desprecia a cualquiera que no se alinee con sus ideales de vida \"saludable\". Odia con pasión cualquier estilo de vida que implique el sedentarismo, la comida chatarra o la falta de ejercicio. Este vive con el fin de cumplir su venganza en contra de Azukita.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-    personaje_t sanbaumaro = {"SAN BAUMARO","Baumaro era un marino muy valiente que se perdió en las aguas del destino. Las olas y el viento lo arrastraron y murió ahogado. Luego de esto, fue canonizado como un santo, a quien los marinos le rezan para no morir ahogados.",1,1,1,1,1,1,1,1,1,1,1,{"Masaje destructor de vértebras"," ATAQUE","le da un masaje super fuerte que causa terribles dolores a sus enemigos", 80, 0, 90},{"Babeada divina"," ATAQUE","ahoga a sus enemigos en introduciendo una inmensa cantidad de baba en sus gargantas",70, 0 , 100},{"Sumersión sagrada"," ATAQUE","sumerge a sus enemigos en lo profundo del mar desligandolos de todos los males",100,0,70},{"Ola de rescate divino"," DEFENSA","lanza una ola que preteje a sus aliados y a el aumentando el atq y vel del personaje",0,30,70},{},{},{}};
+    personaje_t sanbaumaro = {"SAN BAUMARO","Baumaro era un marino muy valiente que se perdió en las aguas del destino. Las olas y el viento lo arrastraron y murió ahogado. Luego de esto, fue canonizado como un santo, a quien los marinos le rezan para no morir ahogados.",1,1,1,1,1,1,1,1,1,1,1,{"Masaje destructor de vértebras"," ATAQUE","le da un masaje super fuerte que causa terribles dolores a sus enemigos", 80, 0, 90},{"Babeada divina"," ATAQUE","ahoga a sus enemigos en introduciendo una inmensa cantidad de baba en sus gargantas",70, 0 , 100},{"Sumersión sagrada"," ATAQUE","sumerge a sus enemigos en lo profundo del mar desligandolos de todos los males",100,0,70},{"Ola de rescate divino"," DEFENSA","lanza una ola que preteje a sus aliados y a el aumentando el atq y vel del personaje",0,30,70},{},{}};
     personaje_t thanas = {"THANAS","Benjamín Tana era un chico común y corriente, hasta el día que vio Avengers: Infinity War en 2018. En ese momento, se identificó fuertemente con el personaje de Thanos, y decidió que iba a realizar su proyecto en el mundo real. Dedicó 5 años de su vida a entrenarse para asesinar gente. Luego de su arduo entrenamiento, comenzó su proyecto de matar a la mitad de la población (los de DNI impar).",1,1,1,1,1,1,1,1,1,1,1,{"Pelotazo del infinito"," ATAQUE","lanza un pelotazo a tres dedos a la velocidad de un meteorito que golpea y aturde a sus rivales",60,0,100},{" "},{},{}};
-    personaje_t Jugador_1 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{"","","",0,0,0}};
-    personaje_t Jugador_2 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{"","","",0,0,0}};
+    personaje_t Jugador_1 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
+    personaje_t Jugador_2 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
 
     bienvenida();
     lista_personajes();
     printf("si desea ver las caracteristicas de los heroes / villanos ingrese un 1 \n");
     scanf("%i", &caracteristicas);
-    if (caracteristicas =! 0)
+    if (caracteristicas == 1)
     {
         info(azukita, misil);
         caracteristicas = 0;
@@ -72,7 +75,7 @@ int main(){
         
         printf("ingrese el nombre del heroe / villano para el jugador 1 \n");
         scanf("%s", personaje_1);
-        if (!((strcmp(personaje_1, azukita.nombre) == 0)||(strcmp(personaje_1, misil.nombre) != 0)))
+        if (!((strcmp(personaje_1, azukita.nombre) == 0)||(strcmp(personaje_1, misil.nombre) == 0)||(strcmp(personaje_1, sanbaumaro.nombre) == 0)||(strcmp(personaje_1, thanas.nombre) == 0)))
         {
             printf("no ingresaste un nombre valido\n");
             nombre_valido = 0;
@@ -135,7 +138,7 @@ int main(){
             Jugador_1.mov_6.presicion = azukita.mov_6.presicion;
 
 
-        }else if(strcmp(personaje_1, sanbaumaro.nombre) == 0){
+        }else if(strcmp(personaje_1, misil.nombre) == 0){
 
             strcpy(Jugador_1.nombre, misil.nombre);
             strcpy(Jugador_1.historia, misil.historia);
@@ -192,7 +195,7 @@ int main(){
             Jugador_1.mov_6.curacion = misil.mov_6.curacion;
             Jugador_1.mov_6.presicion = misil.mov_6.presicion;
 
-        }else if(strcmp(personaje_1, misil.nombre) == 0){
+        }else if(strcmp(personaje_1, sanbaumaro.nombre) == 0){
 
             strcpy(Jugador_1.nombre, sanbaumaro.nombre);
             strcpy(Jugador_1.historia, sanbaumaro.historia);
@@ -315,7 +318,7 @@ int main(){
         
     printf("ingrese el nombre del heroe / villano para el jugador 2 \n");
     scanf("%s", personaje_2);
-        if (!((strcmp(personaje_2, azukita.nombre) == 0)||(strcmp(personaje_2, misil.nombre) != 0)))
+        if (!((strcmp(personaje_1, azukita.nombre) == 0)||(strcmp(personaje_1, misil.nombre) == 0)||(strcmp(personaje_1, sanbaumaro.nombre) == 0)||(strcmp(personaje_1, thanas.nombre) == 0)))
         {
             printf("no ingresaste un nombre valido\n");
             nombre_valido = 0;
@@ -382,7 +385,7 @@ int main(){
             Jugador_2.mov_6.presicion = azukita.mov_6.presicion;
 
 
-        }else if(strcmp(personaje_2, sanbaumaro.nombre) == 0){
+        }else if(strcmp(personaje_2, misil.nombre) == 0){
 
             strcpy(Jugador_2.nombre, misil.nombre);
             strcpy(Jugador_2.historia, misil.historia);
@@ -438,7 +441,7 @@ int main(){
             Jugador_2.mov_6.potencia = misil.mov_6.potencia;
             Jugador_2.mov_6.curacion = misil.mov_6.curacion;
 
-        }else if(strcmp(personaje_1, misil.nombre) == 0){
+        }else if(strcmp(personaje_1, sanbaumaro.nombre) == 0){
 
             strcpy(Jugador_2.nombre, sanbaumaro.nombre);
             strcpy(Jugador_2.historia, sanbaumaro.historia);
@@ -973,9 +976,7 @@ int main(){
 
 void bienvenida(void) {
     printf("Bienvenido a heroes vs villanos\n");
-    printf("El sistema de combate va a ser por turnos, ambos jugadores eligen 1 Heroe o Villano, cada heroe o villano tiene 3 ataques y 3 defensas, el jugador que ataca primero se define mediante las velosidades de sus respectivos personajes");
-    
-    return 0;
+    printf("El sistema de combate va a ser por turnos, ambos jugadores eligen 1 Heroe o Villano, cada heroe o villano tiene 3 ataques y 3 defensas, el jugador que ataca primero se define mediante las velosidades de sus respectivos personajes\n");
 }
 
 void lista_personajes(void){
@@ -983,251 +984,246 @@ void lista_personajes(void){
     printf("AZUKITA \n");
     printf("MISIL \n");
     printf("SAN BAUMARO\n");
-    prrintf("THANAS\n");
-
-    return 0;
+    printf("THANAS\n");
 }
 
-void info(personaje_t Jugador_1, personaje_t Jugador_2){
-    char personaje_ele_caracteristicas[10]; // esta variable se usa para elegir de que personaje se desea ver las caracteristicas
-    printf("de que personaje desea ver las estadisticas o si desea de ambos ingrese \"ambos\"\n");
+void info(personaje_t Jugador_1, personaje_t Jugador_2) {
+    char personaje_ele_caracteristicas[10]; 
+    printf("De que personaje desea ver las estadisticas o si desea de ambos ingrese \"ambos\"\n");
     scanf("%s", personaje_ele_caracteristicas);
-    if(strcmp(personaje_ele_caracteristicas, Jugador_1.nombre) == 0){
+    
+    if (strcmp(personaje_ele_caracteristicas, Jugador_1.nombre) == 0) {
+        printf("\nNombre: %s\n", Jugador_1.nombre);
+        printf("Historia: %s\n", Jugador_1.historia);
+        printf("Vida: %i\n", Jugador_1.vida);
+        printf("Atq: %i\n", Jugador_1.atq); 
+        printf("Def: %i\n", Jugador_1.def); 
+        printf("Vel: %i\n", Jugador_1.vel); 
+        printf("Daniocrit: %i\n", Jugador_1.daniocrit); 
+        printf("Probcrit: %i\n", Jugador_1.probcrit); 
+        printf("Evacion: %i\n", Jugador_1.evacion); 
+        printf("X_evacion: %i\n", Jugador_1.x_evacion);
+        printf("X_atq: %i\n", Jugador_1.x_atq);
+        printf("X_def: %i\n", Jugador_1.x_def);
+        printf("X_vel: %i\n", Jugador_1.x_vel);
+        
+        printf("Nombre del movimiento 1: %s\n", Jugador_1.mov_1.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_1.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_1.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_1.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_1.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_1.presicion);
 
-        printf("\nnombre: %s\n", Jugador_1.nombre);
-        printf("historia: %s\n", Jugador_1.historia);
-        printf("vida: %i\n", Jugador_1.vida);
-        printf("atq: %c\n", Jugador_1.atq);
-        printf("def: %c\n", Jugador_1.def);
-        printf("vel: %c\n", Jugador_1.vel);
-        printf("daniocrit: %c\n", Jugador_1.daniocrit);
-        printf("probcrit: %c\n", Jugador_1.probcrit);
-        printf("evacion: %c\n", Jugador_1.evacion);
-        printf("x_evacion: %i\n", Jugador_1.x_evacion);
+        printf("Nombre del movimiento 2: %s\n", Jugador_1.mov_2.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_2.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_2.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_2.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_2.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_2.presicion); 
 
-        printf("x_atq: %i\n", Jugador_1.x_atq);
-        printf("x_def: %i\n", Jugador_1.x_def);
-        printf("x_def: %i\n", Jugador_1.x_vel);
+        printf("Nombre del movimiento 3: %s\n", Jugador_1.mov_3.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_3.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_3.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_3.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_3.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_3.presicion); 
 
-        printf("nombre del movimiento 1: %s\n", Jugador_1.mov_1.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_1.tipo);
-        printf("descripcion del movmiento: %s\n", Jugador_1.mov_1.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_1.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_1.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_1.presicion);
+        printf("Nombre del movimiento 4: %s\n", Jugador_1.mov_4.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_4.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_4.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_4.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_4.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_4.presicion); 
 
-        printf("nombre del movimiento 2: %s\n", Jugador_1.mov_2.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_2.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_2.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_2.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_2.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_2.presicion);
+        printf("Nombre del movimiento 5: %s\n", Jugador_1.mov_5.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_5.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_5.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_5.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_5.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_5.presicion); 
 
-        printf("nombre del movimiento 3: %i\n", Jugador_1.mov_3.nombre);
-        printf("tipo: %i\n", Jugador_1.mov_3.tipo);
-        printf("descripcion del movimiento: %i\n", Jugador_1.mov_3.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_3.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_3.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_3.presicion);
+        printf("Nombre del movimiento 6: %s\n", Jugador_1.mov_6.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_6.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_6.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_6.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_6.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_6.presicion); 
+        
+    } else if (strcmp(personaje_ele_caracteristicas, Jugador_2.nombre) == 0) {
+        
+        printf("\nNombre: %s\n", Jugador_2.nombre);
+        printf("Historia: %s\n", Jugador_2.historia);
+        printf("Vida: %i\n", Jugador_2.vida);
+        printf("Atq: %i\n", Jugador_2.atq);
+        printf("Def: %i\n", Jugador_2.def); 
+        printf("Vel: %i\n", Jugador_2.vel); 
+        printf("Daniocrit: %i\n", Jugador_2.daniocrit); 
+        printf("Probcrit: %i\n", Jugador_2.probcrit); 
+        printf("Evacion: %i\n", Jugador_2.evacion); 
+        printf("X_evacion: %i\n", Jugador_2.x_evacion);
+        printf("X_atq: %i\n", Jugador_2.x_atq);
+        printf("X_def: %i\n", Jugador_2.x_def);
+        printf("X_vel: %i\n", Jugador_2.x_vel);
+        
+        printf("Nombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_1.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_1.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_1.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_1.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_1.presicion); 
 
-        printf("nombre del movimiento 4: %s\n", Jugador_1.mov_4.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_4.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_4.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_4.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_4.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_4.presicion);
+        printf("Nombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_2.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_2.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_2.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_2.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_2.presicion); 
 
-        printf("nombre del movimiento 5: %s\n", Jugador_1.mov_5.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_5.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_5.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_5.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_5.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_5.presicion);
+        printf("Nombre del movimiento 3: %s\n", Jugador_2.mov_3.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_3.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_3.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_3.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_3.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_3.presicion); 
+        printf("Nombre del movimiento 4: %s\n", Jugador_2.mov_4.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_4.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_4.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_4.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_4.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_4.presicion); 
 
-        printf("nombre del movimiento 6: %s\n", Jugador_1.mov_6.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_6.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_6.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_6.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_6.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_6.presicion);
+        printf("Nombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_5.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_5.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_5.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_5.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_5.presicion);
 
+        printf("Nombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_6.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_6.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_6.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_6.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_6.presicion); 
+    } else if (strcmp(personaje_ele_caracteristicas, "ambos") == 0) {
+        
+        printf("JUGADOR 2\n");
+        
+        printf("\nNombre: %s\n", Jugador_2.nombre);
+        printf("Historia: %s\n", Jugador_2.historia);
+        printf("Vida: %i\n", Jugador_2.vida);
+        printf("Atq: %i\n", Jugador_2.atq);
+        printf("Def: %i\n", Jugador_2.def); 
+        printf("Vel: %i\n", Jugador_2.vel); 
+        printf("Daniocrit: %i\n", Jugador_2.daniocrit); 
+        printf("Probcrit: %i\n", Jugador_2.probcrit); 
+        printf("Evacion: %i\n", Jugador_2.evacion); 
+        printf("X_evacion: %i\n", Jugador_2.x_evacion);
+        printf("X_atq: %i\n", Jugador_2.x_atq);
+        printf("X_def: %i\n", Jugador_2.x_def);
+        printf("X_vel: %i\n", Jugador_2.x_vel);
+        
+        printf("Nombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_1.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_1.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_1.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_1.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_1.presicion); 
 
-    }else if (strcmp(personaje_ele_caracteristicas, Jugador_2.nombre) == 0){
+        printf("Nombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_2.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_2.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_2.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_2.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_2.presicion); 
 
-        printf("\n nombre: %s\n", Jugador_2.nombre);
-        printf("historia: %s\n", Jugador_2.historia);
-        printf("vida: %i\n", Jugador_2.vida);
-        printf("atq: %c\n", Jugador_2.atq);
-        printf("def: %c\n", Jugador_2.def);
-        printf("vel: %c\n", Jugador_2.vel);
-        printf("daniocrit: %c\n", Jugador_2.daniocrit);
-        printf("probcrit: %c\n", Jugador_2.probcrit);
-        printf("evacion: %c\n", Jugador_2.evacion);
-        printf("x_evacion: %i\n", Jugador_2.x_evacion);
+        printf("Nombre del movimiento 3: %s\n", Jugador_2.mov_3.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_3.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_3.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_3.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_3.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_3.presicion); 
+        printf("Nombre del movimiento 4: %s\n", Jugador_2.mov_4.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_4.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_4.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_4.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_4.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_4.presicion); 
 
-        printf("x_atq: %i\n", Jugador_2.x_atq);
-        printf("x_def: %i\n", Jugador_2.x_def);
-        printf("x_def: %i\n", Jugador_2.x_vel);
+        printf("Nombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_5.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_5.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_5.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_5.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_5.presicion);
 
-        printf("nombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_1.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_1.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_1.potencia);
-        printf("curancion: %i\n", Jugador_2.mov_1.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_1.presicion);
+        printf("Nombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
+        printf("Tipo: %s\n", Jugador_2.mov_6.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_2.mov_6.descripcion);
+        printf("Potencia: %i\n", Jugador_2.mov_6.potencia);
+        printf("Curacion: %i\n", Jugador_2.mov_6.curacion);
+        printf("Presicion: %i\n", Jugador_2.mov_6.presicion); 
+        
+        printf("JUGADOR 1\n");
+        
+        printf("\nNombre: %s\n", Jugador_1.nombre);
+        printf("Historia: %s\n", Jugador_1.historia);
+        printf("Vida: %i\n", Jugador_1.vida);
+        printf("Atq: %i\n", Jugador_1.atq); 
+        printf("Def: %i\n", Jugador_1.def); 
+        printf("Vel: %i\n", Jugador_1.vel); 
+        printf("Daniocrit: %i\n", Jugador_1.daniocrit); 
+        printf("Probcrit: %i\n", Jugador_1.probcrit); 
+        printf("Evacion: %i\n", Jugador_1.evacion); 
+        printf("X_evacion: %i\n", Jugador_1.x_evacion);
+        printf("X_atq: %i\n", Jugador_1.x_atq);
+        printf("X_def: %i\n", Jugador_1.x_def);
+        printf("X_vel: %i\n", Jugador_1.x_vel);
+        
+        printf("Nombre del movimiento 1: %s\n", Jugador_1.mov_1.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_1.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_1.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_1.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_1.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_1.presicion);
 
-        printf("nombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_2.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_2.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_2.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_2.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_2.presicion);
+        printf("Nombre del movimiento 2: %s\n", Jugador_1.mov_2.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_2.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_2.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_2.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_2.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_2.presicion); 
 
-        printf("nombre del movimiento 3: %i\n", Jugador_2.mov_3.nombre);
-        printf("tipo: %i\n", Jugador_2.mov_3.tipo);
-        printf("descripcion del movimiento: %i\n", Jugador_2.mov_3.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_3.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_3.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_3.presicion);
+        printf("Nombre del movimiento 3: %s\n", Jugador_1.mov_3.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_3.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_3.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_3.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_3.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_3.presicion); 
 
-        printf("nombre del movimiento 4: %s\n", Jugador_2.mov_4.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_4.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_4.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_4.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_4.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_4.presicion);
+        printf("Nombre del movimiento 4: %s\n", Jugador_1.mov_4.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_4.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_4.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_4.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_4.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_4.presicion); 
 
-        printf("nombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_5.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_5.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_5.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_5.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_5.presicion);
+        printf("Nombre del movimiento 5: %s\n", Jugador_1.mov_5.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_5.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_5.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_5.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_5.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_5.presicion); 
 
-        printf("nombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_6.tipo);
-        printf("descripcion: %s\n", Jugador_2.mov_6.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_6.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_6.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_6.presicion);
-
-    }else if (strcmp(personaje_ele_caracteristicas, "ambos") == 0){
-
-
-        printf("\n nombre: %s\n", Jugador_2.nombre);
-        printf("historia: %s\n", Jugador_2.historia);
-        printf("vida: %i\n", Jugador_2.vida);
-        printf("atq: %c\n", Jugador_2.atq);
-        printf("def: %c\n", Jugador_2.def);
-        printf("vel: %c\n", Jugador_2.vel);
-        printf("daniocrit: %c\n", Jugador_2.daniocrit);
-        printf("probcrit: %c\n", Jugador_2.probcrit);
-        printf("evacion: %c\n", Jugador_2.evacion);
-        printf("x_evacion: %i\n", Jugador_2.x_evacion);
-
-        printf("x_atq: %i\n", Jugador_2.x_atq);
-        printf("x_def: %i\n", Jugador_2.x_def);
-        printf("x_def: %i\n", Jugador_2.x_vel);
-
-        printf("nombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_1.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_1.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_1.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_1.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_1.presicion);
-
-        printf("nombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_2.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_2.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_2.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_2.curacion);
-        printf("x_def: %c\n", Jugador_2.mov_2.presicion);
-
-        printf("nombre del movimiento 3: %i\n", Jugador_2.mov_3.nombre);
-        printf("tipo: %i\n", Jugador_2.mov_3.tipo);
-        printf("descripcion del movimiento: %i\n", Jugador_2.mov_3.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_3.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_3.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_3.presicion);
-
-        printf("nombre del movimiento 4: %s\n", Jugador_2.mov_4.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_4.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_4.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_4.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_4.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_4.presicion);
-
-        printf("nombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_5.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_5.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_5.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_5.curacion);
-        printf("presicion: %c\n", Jugador_2.mov_5.presicion);
-
-        printf("nombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
-        printf("tipo: %s\n", Jugador_2.mov_6.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_2.mov_6.descripcion);
-        printf("potencia: %i\n", Jugador_2.mov_6.potencia);
-        printf("curacion: %i\n", Jugador_2.mov_6.curacion);
-        printf("presicion: %c\n\n\n", Jugador_2.mov_6.presicion);
-
-        printf("\nnombre: %s\n", Jugador_1.nombre);
-        printf("historia: %s\n", Jugador_1.historia);
-        printf("vida: %i\n", Jugador_1.vida);
-        printf("atq: %c\n", Jugador_1.atq);
-        printf("def: %c\n", Jugador_1.def);
-        printf("vel: %c\n", Jugador_1.vel);
-        printf("daniocrit: %c\n", Jugador_1.daniocrit);
-        printf("probcrit: %c\n", Jugador_1.probcrit);
-        printf("evacion: %c\n", Jugador_1.evacion);
-        printf("x_evacion: %i\n", Jugador_1.x_evacion);
-
-        printf("x_atq: %i\n", Jugador_1.x_atq);
-        printf("x_def: %i\n", Jugador_1.x_def);
-        printf("x_vel: %i\n", Jugador_1.x_vel);
-
-        printf("nombre del movimiento 1: %s\n", Jugador_1.mov_1.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_1.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_1.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_1.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_1.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_1.presicion);
-
-        printf("nombre del movimiento 2: %s\n", Jugador_1.mov_2.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_2.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_2.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_2.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_2.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_2.presicion);
-
-        printf("nombre del movimiento 3: %i\n", Jugador_1.mov_3.nombre);
-        printf("tipo: %i\n", Jugador_1.mov_3.tipo);
-        printf("descripcion del movimiento: %i\n", Jugador_1.mov_3.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_3.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_3.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_3.presicion);
-
-        printf("nombre del movimiento 4: %s\n", Jugador_1.mov_4.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_4.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_4.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_4.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_4.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_4.presicion);
-
-        printf("nombre del movimiento 5: %s\n", Jugador_1.mov_5.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_5.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_5.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_5.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_5.curacion);
-        printf("presicion: %c\n", Jugador_1.mov_5.presicion);
-
-        printf("nombre del movimiento 6: %s\n", Jugador_1.mov_6.nombre);
-        printf("tipo: %s\n", Jugador_1.mov_6.tipo);
-        printf("descripcion del movimiento: %s\n", Jugador_1.mov_6.descripcion);
-        printf("potencia: %i\n", Jugador_1.mov_6.potencia);
-        printf("curacion: %i\n", Jugador_1.mov_6.curacion);
-        printf("presicion: %c\n\n", Jugador_1.mov_6.presicion);
-
+        printf("Nombre del movimiento 6: %s\n", Jugador_1.mov_6.nombre);
+        printf("Tipo: %s\n", Jugador_1.mov_6.tipo);
+        printf("Descripcion del movimiento: %s\n", Jugador_1.mov_6.descripcion);
+        printf("Potencia: %i\n", Jugador_1.mov_6.potencia);
+        printf("Curacion: %i\n", Jugador_1.mov_6.curacion);
+        printf("Presicion: %i\n", Jugador_1.mov_6.presicion); 
+        
+        
+    } else {
+        printf("Personaje no reconocido.\n");
     }
-    return 0;
 }
