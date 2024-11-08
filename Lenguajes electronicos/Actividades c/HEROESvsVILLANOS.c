@@ -58,8 +58,8 @@ int main(){
     personaje_t misil = {"MISIL","Misil es un hombre joven, de unos 28 años, con cabello rubio platinado dándole un aspecto retro y agresivo. Está completamente musculoso, con una masa corporal enorme debido a su adicción al gimnasio y al uso excesivo de sustancias, lo que lo hace ver más grande de lo normal. Vive bajo la idea de que el físico perfecto lo es todo, y desprecia a cualquiera que no se alinee con sus ideales de vida \"saludable\". Odia con pasión cualquier estilo de vida que implique el sedentarismo, la comida chatarra o la falta de ejercicio. Este vive con el fin de cumplir su venganza en contra de Azukita.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     personaje_t sanbaumaro = {"SAN BAUMARO","Baumaro era un marino muy valiente que se perdió en las aguas del destino. Las olas y el viento lo arrastraron y murió ahogado. Luego de esto, fue canonizado como un santo, a quien los marinos le rezan para no morir ahogados.",1,1,1,1,1,1,1,1,1,1,1,{"Masaje destructor de vértebras"," ATAQUE","le da un masaje super fuerte que causa terribles dolores a sus enemigos", 80, 0, 90},{"Babeada divina"," ATAQUE","ahoga a sus enemigos en introduciendo una inmensa cantidad de baba en sus gargantas",70, 0 , 100},{"Sumersión sagrada"," ATAQUE","sumerge a sus enemigos en lo profundo del mar desligandolos de todos los males",100,0,70},{"Ola de rescate divino"," DEFENSA","lanza una ola que preteje a sus aliados y a el aumentando el atq y vel del personaje",0,30,70},{},{}};
     personaje_t thanas = {"THANAS","Benjamín Tana era un chico común y corriente, hasta el día que vio Avengers: Infinity War en 2018. En ese momento, se identificó fuertemente con el personaje de Thanos, y decidió que iba a realizar su proyecto en el mundo real. Dedicó 5 años de su vida a entrenarse para asesinar gente. Luego de su arduo entrenamiento, comenzó su proyecto de matar a la mitad de la población (los de DNI impar).",1,1,1,1,1,1,1,1,1,1,1,{"Pelotazo del infinito"," ATAQUE","lanza un pelotazo a tres dedos a la velocidad de un meteorito que golpea y aturde a sus rivales",60,0,100},{" "},{},{}};
-    personaje_t Jugador_1 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
-    personaje_t Jugador_2 = {" "," "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
+    personaje_t Jugador_1 = {" "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
+    personaje_t Jugador_2 = {" "," ",1,1,1,1,1,1,1,1,1,1,1,{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0},{" "," "," ",0,0,0}};
 
     bienvenida();
     lista_personajes();
@@ -67,7 +67,7 @@ int main(){
     scanf("%i", &caracteristicas);
     if (caracteristicas == 1)
     {
-        info(azukita, misil);
+        info(Jugador_1, Jugador_2);
         caracteristicas = 0;
     }
     do
@@ -137,6 +137,8 @@ int main(){
             Jugador_1.mov_6.curacion = azukita.mov_6.curacion;
             Jugador_1.mov_6.presicion = azukita.mov_6.presicion;
 
+            nombre_valido = 1;
+
 
         }else if(strcmp(personaje_1, misil.nombre) == 0){
 
@@ -195,6 +197,8 @@ int main(){
             Jugador_1.mov_6.curacion = misil.mov_6.curacion;
             Jugador_1.mov_6.presicion = misil.mov_6.presicion;
 
+            nombre_valido = 1;
+
         }else if(strcmp(personaje_1, sanbaumaro.nombre) == 0){
 
             strcpy(Jugador_1.nombre, sanbaumaro.nombre);
@@ -252,6 +256,8 @@ int main(){
             Jugador_1.mov_6.curacion = sanbaumaro.mov_6.curacion;
             Jugador_1.mov_6.presicion = sanbaumaro.mov_6.presicion;
 
+            nombre_valido = 1;
+
         }else if(strcmp(personaje_1, thanas.nombre) == 0){
 
             strcpy(Jugador_1.nombre, thanas.nombre);
@@ -308,6 +314,8 @@ int main(){
             Jugador_1.mov_6.potencia = thanas.mov_6.potencia;
             Jugador_1.mov_6.curacion = thanas.mov_6.curacion;
             Jugador_1.mov_6.presicion = thanas.mov_6.presicion;
+
+            nombre_valido = 1;
         }
 
     } while (nombre_valido == 0);
@@ -384,6 +392,8 @@ int main(){
             Jugador_2.mov_6.curacion = azukita.mov_6.curacion;
             Jugador_2.mov_6.presicion = azukita.mov_6.presicion;
 
+            nombre_valido = 1;
+
 
         }else if(strcmp(personaje_2, misil.nombre) == 0){
 
@@ -440,6 +450,8 @@ int main(){
             strcpy(Jugador_2.mov_6.descripcion, misil.mov_6.descripcion);
             Jugador_2.mov_6.potencia = misil.mov_6.potencia;
             Jugador_2.mov_6.curacion = misil.mov_6.curacion;
+
+            nombre_valido = 1;
 
         }else if(strcmp(personaje_1, sanbaumaro.nombre) == 0){
 
@@ -498,6 +510,8 @@ int main(){
             Jugador_2.mov_6.curacion = sanbaumaro.mov_6.curacion;
             Jugador_2.mov_6.presicion = sanbaumaro.mov_6.presicion;
 
+            nombre_valido = 1;
+
         }else if(strcmp(personaje_1, thanas.nombre) == 0){
 
             strcpy(Jugador_2.nombre, thanas.nombre);
@@ -554,20 +568,21 @@ int main(){
             Jugador_2.mov_6.potencia = thanas.mov_6.potencia;
             Jugador_2.mov_6.curacion = thanas.mov_6.curacion;
             Jugador_2.mov_6.presicion = thanas.mov_6.presicion;
+
+            nombre_valido = 1;
+
         }
         
     }while (nombre_valido == 0);
 
-    nombre_valido = 1;
-
-    printf("¡ QUE INICIE LA BATALLA !");
-    while(batalla == 1);{
+    printf("¡ QUE INICIE LA BATALLA !\n");
+    while(batalla == 1){
 
         printf("Turno del jugador 1\n");
         printf("si desea ver las caracteristicas de los heroes / villanos ingrese un 1 \n");
         scanf("%i", &caracteristicas);
 
-        if (caracteristicas =! 0)
+        if (caracteristicas == 1)
         {
             info(azukita, misil);
             caracteristicas = 0;
@@ -583,12 +598,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_1.presicion - Jugador_2.evacion * Jugador_2.x_evacion))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
@@ -615,12 +632,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_2.presicion - Jugador_2.evacion * Jugador_2.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
 
             Jugador_2.vida = Jugador_2.vida - (((Jugador_1.mov_2.potencia + Jugador_1.atq * Jugador_1.x_atq * Jugador_1.daniocrit)* evadir)/(Jugador_2.def * Jugador_2.x_def));
@@ -646,12 +665,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_3.presicion - Jugador_2.evacion * Jugador_2.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
 
             Jugador_2.vida = Jugador_2.vida - (((Jugador_1.mov_3.potencia + Jugador_1.atq * Jugador_1.x_atq * Jugador_1.daniocrit)* evadir)/(Jugador_2.def * Jugador_2.x_def));
@@ -661,6 +682,7 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_3.presicion - Jugador_2.evacion * Jugador_2.x_evacion ))
             {
                 evadir = 1;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
@@ -678,12 +700,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_4.presicion - Jugador_2.evacion * Jugador_2.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
 
             Jugador_2.vida = Jugador_2.vida - (((Jugador_1.mov_4.potencia + Jugador_1.atq * Jugador_1.x_atq * Jugador_1.daniocrit)* evadir)/(Jugador_2.def * Jugador_2.x_def));
@@ -710,12 +734,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_5.presicion - Jugador_2.evacion * Jugador_2.x_evacion))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
 
             Jugador_2.vida = Jugador_2.vida - (((Jugador_1.mov_5.potencia + Jugador_1.atq * Jugador_1.x_atq * Jugador_1.daniocrit)* evadir)/(Jugador_2.def * Jugador_2.x_def));
@@ -742,12 +768,14 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_1.mov_6.presicion - Jugador_2.evacion * Jugador_2.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_1.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_1.daniocrit;
                 Jugador_1.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
 
             Jugador_2.vida = Jugador_2.vida - (((Jugador_1.mov_6.potencia + Jugador_1.atq * Jugador_1.x_atq * Jugador_1.daniocrit)* evadir)/(Jugador_2.def * Jugador_2.x_def));
@@ -790,16 +818,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_1.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_1.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_1.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_1.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
@@ -819,16 +850,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_2.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_2.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_2.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_2.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
@@ -848,16 +882,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_3.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_3.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_3.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_3.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
@@ -868,6 +905,7 @@ int main(){
             {
                 Jugador_2.daniocrit = numero_de_respaldo_gp;
                 numero_de_respaldo_gp = 1;
+                
             }
 
         }else if (strcmp(movimiento_actual, Jugador_1.mov_4.nombre) == 0){
@@ -877,16 +915,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_4.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_4.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_4.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_4.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
@@ -906,16 +947,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_5.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_5.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_5.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_5.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
@@ -936,16 +980,19 @@ int main(){
             if (numero_aleatorio_evadir > (Jugador_2.mov_6.presicion - Jugador_1.evacion * Jugador_1.x_evacion ))
             {
                 evadir = 0;
+                printf("HAN EVADIDO TU MOVIMIENTO\n\n");
             }
 
             if (numero_aleatorio_golpecrit > Jugador_2.probcrit)
             {
                 numero_de_respaldo_gp = Jugador_2.daniocrit;
                 Jugador_2.daniocrit = 1;
+                printf("GOLPE CRITICO\n\n");
             }
             
             
             Jugador_1.vida = Jugador_1.vida - (((Jugador_2.mov_6.potencia + Jugador_2.atq * Jugador_2.x_atq * Jugador_2.daniocrit)* evadir)/(Jugador_1.def * Jugador_1.x_def));
+            Jugador_2.vida = Jugador_2.vida + Jugador_2.mov_6.curacion;
 
             if (numero_aleatorio_evadir > (Jugador_2.mov_6.presicion - Jugador_1.evacion * Jugador_1.x_evacion))
             {
@@ -1065,21 +1112,21 @@ void info(personaje_t Jugador_1, personaje_t Jugador_2) {
         printf("X_def: %i\n", Jugador_2.x_def);
         printf("X_vel: %i\n", Jugador_2.x_vel);
         
-        printf("Nombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
+        printf("\nNombre del movimiento 1: %s\n", Jugador_2.mov_1.nombre);
         printf("Tipo: %s\n", Jugador_2.mov_1.tipo);
         printf("Descripcion del movimiento: %s\n", Jugador_2.mov_1.descripcion);
         printf("Potencia: %i\n", Jugador_2.mov_1.potencia);
         printf("Curacion: %i\n", Jugador_2.mov_1.curacion);
         printf("Presicion: %i\n", Jugador_2.mov_1.presicion); 
 
-        printf("Nombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
+        printf("\nNombre del movimiento 2: %s\n", Jugador_2.mov_2.nombre);
         printf("Tipo: %s\n", Jugador_2.mov_2.tipo);
         printf("Descripcion del movimiento: %s\n", Jugador_2.mov_2.descripcion);
         printf("Potencia: %i\n", Jugador_2.mov_2.potencia);
         printf("Curacion: %i\n", Jugador_2.mov_2.curacion);
         printf("Presicion: %i\n", Jugador_2.mov_2.presicion); 
 
-        printf("Nombre del movimiento 3: %s\n", Jugador_2.mov_3.nombre);
+        printf("\nNombre del movimiento 3: %s\n", Jugador_2.mov_3.nombre);
         printf("Tipo: %s\n", Jugador_2.mov_3.tipo);
         printf("Descripcion del movimiento: %s\n", Jugador_2.mov_3.descripcion);
         printf("Potencia: %i\n", Jugador_2.mov_3.potencia);
@@ -1092,14 +1139,14 @@ void info(personaje_t Jugador_1, personaje_t Jugador_2) {
         printf("Curacion: %i\n", Jugador_2.mov_4.curacion);
         printf("Presicion: %i\n", Jugador_2.mov_4.presicion); 
 
-        printf("Nombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
+        printf("\nNombre del movimiento 5: %s\n", Jugador_2.mov_5.nombre);
         printf("Tipo: %s\n", Jugador_2.mov_5.tipo);
         printf("Descripcion del movimiento: %s\n", Jugador_2.mov_5.descripcion);
         printf("Potencia: %i\n", Jugador_2.mov_5.potencia);
         printf("Curacion: %i\n", Jugador_2.mov_5.curacion);
         printf("Presicion: %i\n", Jugador_2.mov_5.presicion);
 
-        printf("Nombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
+        printf("\nNombre del movimiento 6: %s\n", Jugador_2.mov_6.nombre);
         printf("Tipo: %s\n", Jugador_2.mov_6.tipo);
         printf("Descripcion del movimiento: %s\n", Jugador_2.mov_6.descripcion);
         printf("Potencia: %i\n", Jugador_2.mov_6.potencia);
