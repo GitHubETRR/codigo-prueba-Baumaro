@@ -4,6 +4,9 @@
 
 #define MAX_TXT 30
 
+#define MAX_TABLERO_X 8
+#define MAX_TABLERO_Y 8
+
 #define BLANCO 1
 #define NEGRO 0
 
@@ -26,10 +29,10 @@
 #define REY_NEGRO 0x2654
 
 
-void imprimir_tablero(wchar_t tablero[8][8]);
-void reset(wchar_t tablero[8][8]);
-void mov_peon_blanco(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x);
-void mov_peon_negro(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x);
+void imprimir_tablero(wchar_t tablero[MAX_TABLERO_X][MAX_TABLERO_Y]);
+void reset(wchar_t tablero[MAX_TABLERO_X][MAX_TABLERO_Y]);
+void mov_peon_blanco(wchar_t tablero[MAX_TABLERO_X][MAX_TABLERO_Y], int casilla_Mov_y, int casilla_Mov_x);
+void mov_peon_negro(wchar_t tablero[MAX_TABLERO_X][MAX_TABLERO_Y], int casilla_Mov_y, int casilla_Mov_x);
 
 int main(void){
     setlocale(LC_CTYPE, "");
@@ -39,7 +42,7 @@ int main(void){
     wprintf(L"bienvenido a AJEDREZ CON BAUMARO\n");
     wprintf(L"desea iniciar el juego? \n(1) - si \n(0) - no\n");
     scanf("%d", &Juego);
-    wchar_t tablero[8][8];
+    wchar_t tablero[MAX_TABLERO_X][MAX_TABLERO_Y];
     reset(tablero);
     while(Juego == 1){
         turnos++;
@@ -61,6 +64,9 @@ void imprimir_tablero(wchar_t tablero[8][8]){
     
     int For_2, For_3;
     int color_columna, color_fila = 0;
+
+    wprintf(L"\n0     1     2     3     4     5     6     7\n");
+
     for(For_2 = 0; For_2 < 8; For_2++){
         color_columna++;
         color_fila = 0;
@@ -79,7 +85,7 @@ void imprimir_tablero(wchar_t tablero[8][8]){
                 wprintf(L"\033[37;7m  %lc   \033[0m",tablero[For_2][For_3]);
             }
         }
-        wprintf(L"\n");
+        wprintf(L"%d \n", For_2);
     }
 }
 
@@ -217,4 +223,11 @@ void mov_peon_blanco(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x
         tablero[casilla_Mov_y - 1][casilla_Mov_x] = tablero[casilla_Mov_y][casilla_Mov_x];
         tablero[casilla_Mov_y][casilla_Mov_x] = ' ';
     }
+}
+
+void mov_caballo(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x){
+
+    if()
+
+
 }
