@@ -226,7 +226,7 @@ void mov_peon_blanco(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x
 }
 
 void mov_caballo(wchar_t tablero[8][8], int casilla_Mov_y, int casilla_Mov_x){
-
+    wprintf(L"desea comer )? \n(1) - si \n(0) - no\n");
     if()
 
 
