@@ -16,13 +16,13 @@ def main():
 
         variable_seleccion = int(input())
 
-        if variable_seleccion == 1:
+        if variable_seleccion == 1: #REGISTRAR
 
             Usuarios.registrar(lista_usuarios)
 
             print("ahora debe iniciar sesion")
 
-        elif variable_seleccion == 2:
+        elif variable_seleccion == 2: #INICIAR SECION
 
             if Usuarios.Iniciar_sesion(lista_usuarios, input("Nombre de usuario: "), input("Contraseña: ")) == True:
                 
@@ -208,9 +208,10 @@ class Usuarios:
 
                 U_valido = True
                 print("se a iniciado sesion correctamente")
+                break
 
-            else:
-                print("tu nombre de usuario o tu contraseC1a estan mal")
+        else:
+            print("tu nombre de usuario o tu contraseC1a estan mal")
 
         return U_valido
 

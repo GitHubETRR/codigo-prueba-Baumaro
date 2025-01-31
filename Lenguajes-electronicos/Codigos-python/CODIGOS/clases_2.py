@@ -12,6 +12,7 @@ REQUISITOS
     pedir la fecha actual       """
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import getpass
 
 from datetime import date
 
@@ -23,7 +24,7 @@ AÑO = 2
 
 def main():
 
-    apagar = True
+    apagar = False
 
     clase = list()
 
@@ -41,7 +42,7 @@ def main():
 
         alumno.definir_responsable(presentes,responsable,sub_responsable,alumno)
 
-    while apagar == True:
+    while apagar == False:
 
         if input("Desea ver la informacion de un alumno (si/no): ").capitalize().strip() == "Si":
 
@@ -93,7 +94,8 @@ def apagar_():
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 def bienvenida():
-    print("Hola bienvenido al programa de almacenamiento de datos sobre clases")
+    name = getpass.getuser()
+    print(f"Hola bienvenido {name}")
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
