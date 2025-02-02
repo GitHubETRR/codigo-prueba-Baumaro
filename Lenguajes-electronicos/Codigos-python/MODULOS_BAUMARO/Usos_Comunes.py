@@ -6,7 +6,7 @@ def bienvenida():
 
 def apagar_():
 
-    if input("si desea apagar el programa ingresa  \"Si\"").capitalize().strip() == "Si": 
+    if input("si desea apagar el programa ingresa  \"Si\": ").capitalize().strip() == "Si": 
         print("apagando...")
         return True  
 
