@@ -14,7 +14,7 @@ def main():
     apagar = False
     
 
-    with open("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Codigo_notas\\Notas.txt","r", encoding = "UTF-8") as Notas:
+    with open("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Gestor_de_notas\\Notas.txt","r", encoding = "UTF-8") as Notas:
 
         Lista_Notas = Notas.readlines()
 
