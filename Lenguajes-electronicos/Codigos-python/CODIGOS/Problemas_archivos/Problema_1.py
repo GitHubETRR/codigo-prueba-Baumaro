@@ -71,7 +71,7 @@ def main():
 
         Lista_nombres, Lista_apellidos, cant_pers = Generar_listas()
 
-        Crear_txt()
+        # Crear_txt()
 
         Pasar_Listas_txt(Lista_nombres, Lista_apellidos, cant_pers)
 
