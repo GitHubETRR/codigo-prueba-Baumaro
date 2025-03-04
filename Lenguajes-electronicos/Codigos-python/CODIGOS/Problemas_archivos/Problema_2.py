@@ -2,10 +2,17 @@ import pandas as pd
 from datetime import date
 import sys
 from pathlib import Path
+import openpyxl
 
 sys.path.append("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python")
 
 from MODULOS_BAUMARO.Usos_Comunes import bienvenida
+
+def df_exel():
+
+    df = pd.read_csv("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.csv")
+
+    df.to_excel("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.xlsx", index = False, engine='openpyxl')
 
 def crear_dataframe():
 
@@ -58,11 +65,11 @@ def Cambiar_tipo_columna():
 
     df = pd.read_csv("C:\\Users\\bauti\\OneDrive\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.csv", encoding="UTF-8" )
 
-    Columna_cambiar = input("ingrese la columna que quiere cambiar de tipo").capitalize().strip()
+    Columna_cambiar = input("ingrese la columna que quiere cambiar de tipo: ").capitalize().strip()
 
-    df[Columna_cambiar] = df[Columna_cambiar].astype(str)
+    df[Columna_cambiar] = df[Columna_cambiar].astype(int)
 
-    df.to_csv("C:\\Users\\bauti\\OneDrive\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.csv", index = False, encoding="UTC-8")
+    df.to_csv("C:\\Users\\bauti\\OneDrive\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.csv", index = False, encoding="UTF-8")
 
 def Cambiar_un_dato():
 
@@ -72,23 +79,21 @@ def Cambiar_un_dato():
 
     dato_cambiar = input("ingresa el dato del df que quiere cambiar: ").capitalize().strip()
     
-    print(type(df.loc[1,columna_dato]))
-    
     if isinstance(df.loc[1,columna_dato], str):
 
-        df[columna_dato] = df[columna_dato].replace(dato_cambiar,input("ingrese el dato que desea ingresar: ").capitalize().strip())
+        df[columna_dato] = df[columna_dato].replace(dato_cambiar ,input("ingrese el dato que desea ingresar: ").capitalize().strip())
 
     elif isinstance(df.loc[1,columna_dato], int):
 
-        df[columna_dato] = df[columna_dato].replace(dato_cambiar,int(input("ingrese el dato que desea ingresar: ")))
+        df[columna_dato] = df[columna_dato].replace(dato_cambiar ,int(input("ingrese el dato que desea ingresar: ")))
 
     elif isinstance(df.loc[1,columna_dato],float) :
 
-        df[columna_dato] = df[columna_dato].replace(dato_cambiar,float(input("ingrese el dato que desea ingresar: ")))
+        df[columna_dato] = df[columna_dato].replace(dato_cambiar ,float(input("ingrese el dato que desea ingresar: ")))
 
     elif isinstance(df.loc[1,columna_dato], bool):
 
-        df[columna_dato] = df[columna_dato].replace(dato_cambiar,bool(input("ingrese el dato que desea ingresar: ")))
+        df[columna_dato] = df[columna_dato].replace(dato_cambiar ,bool(input("ingrese el dato que desea ingresar: ")))
     
     df.to_csv("C:\\Users\\bauti\\OneDrive\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\archivo.csv", index = False, encoding= "UTF-8")
 
@@ -136,6 +141,10 @@ def main():
     else:
 
         print("no ingresaste una opcion valida")
+
+    if input("desea convertir el archivo en un exel si/no: ").capitalize().strip() == "Si":
+
+        df_exel()
 
     print("apagando ...")
     

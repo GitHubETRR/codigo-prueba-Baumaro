@@ -1,4 +1,2 @@
-
-nigga = "fawa"
-
-print(type(nigga))
+import openpyxl
+print(openpyxl.__version__)
