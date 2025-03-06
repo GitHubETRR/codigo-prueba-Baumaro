@@ -43,6 +43,7 @@ def Eliminar_Nota(Lista_Notas):
 
     return Lista_Notas
 
+
 def Limpiar_Notas(Lista_Notas):
 
     with open("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Gestor_de_notas\\Notas.txt","w", encoding = "UTF-8") as Notas:
