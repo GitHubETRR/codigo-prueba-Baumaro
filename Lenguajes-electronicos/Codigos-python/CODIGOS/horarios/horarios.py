@@ -1,5 +1,5 @@
 from pathlib import Path
-from datetime import time
+from datetime import datetime,timedelta,time
 import pandas as pd
 
 
@@ -16,47 +16,48 @@ def crear_df():
         "Sabado" : [],
         "Domingo" : [],
     }
-    ruta = Path("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx")
+    ruta = Path("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx")
 
     if not ruta.exists():
 
         df = pd.DataFrame(dictt)
 
-        df.to_excel(ruta,index = False, engine = "openpyxl")
+        df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx" ,index = False, engine = "openpyxl")
 
-    return ruta
 
-def horas(ruta):
+def horas():
 
-    sep_horas = time(0,int(input("ingrese la separacion de las horas: ")))
+    sep_horas = timedelta(minutes=int(input("ingrese la separacion de las horas: ")))
 
-    time_min = time(int(input("ingrese hora minima: ")))
+    time_min = datetime(2000,1,1,int(input("ingrese hora minima: ")))
 
-    time_max = time(int(input("ingrese hora maxima: ")))
+    time_max = datetime(2000,1,1,int(input("ingrese hora maxima: ")))
 
-    df = pd.read_excel(ruta,engine = "openpyxl")
+    df = pd.read_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx", engine = "openpyxl")
 
-    df[0, "Hora"] = time_min  
+    df.loc[1,"Hora"] = time_min  
 
     i = 0
 
     while  time_min < time_max:
-    
-        time_min += sep_horas
 
         i += 1
 
-        df[i, "Hora"] = time_min
+        time_min += sep_horas
 
-    print(df)
+        dato_guardar = time_min.time().strftime("%H:%M")
+
+        df.loc[i, "Hora"] = dato_guardar
+
+    df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx", engine = "openpyxl")
 
 
 
 def main():
 
-    ruta = crear_df()
+    crear_df()
 
-    horas(ruta)
+    horas()
 
 
 

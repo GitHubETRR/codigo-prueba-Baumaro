@@ -1,6 +1,6 @@
 import sys
 
-sys.path.append("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python")
+sys.path.append("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python")
 
 import MODULOS_BAUMARO.Usos_Comunes as uc
 import pandas as pd
@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 def crear_df():
-    ruta = Path("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx")
+    ruta = Path("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx")
     if not ruta.exists():
         dicc = {
             "Fecha": [],
@@ -22,7 +22,7 @@ def crear_df():
 
         df = pd.DataFrame(dicc)
 
-        df.to_excel("C:\\Users\\bauti\OneDrive\\Documentos\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", index = False , engine = "openpyxl")
+        df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", index = False , engine = "openpyxl")
 
 def ingresar_datos_diario():
 
@@ -47,11 +47,11 @@ def ingresar_datos_diario():
     df.sort_values(by="Fecha", ascending = True)
 
     
-    df.to_excel("C:\\Users\\bauti\OneDrive\\Documentos\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", index = False , engine = "openpyxl")
+    df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", index = False , engine = "openpyxl")
 
 def crear_grafico():
 
-    df = pd.read_excel("C:\\Users\\bauti\OneDrive\\Documentos\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", engine = "openpyxl")
+    df = pd.read_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx", engine = "openpyxl")
     
     grafico = input("Ingresa el tipo de grafico que desea (dispercion/lieal/barras): ").capitalize().strip()
 
@@ -79,11 +79,11 @@ def main():
 
     crear_df()
 
-    df = pd.read_excel("C:\\Users\\bauti\OneDrive\\Documentos\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx")
+    df = pd.read_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\problemas_graficos\\archivo-horas.xlsx")
 
 
     if input("desea ingresar una fila nueva (si/no): ").capitalize().strip() == "Si":
-   
+        
         ingresar_datos_diario()
 
     print(df)
