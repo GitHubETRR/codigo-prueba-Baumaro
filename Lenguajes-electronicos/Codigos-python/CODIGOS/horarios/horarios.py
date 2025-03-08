@@ -25,7 +25,7 @@ def crear_df():
         df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx" ,index = False, engine = "openpyxl")
 
 
-def horas():
+def def_horas():
 
     sep_horas = timedelta(minutes=int(input("ingrese la separacion de las horas: ")))
 
@@ -51,13 +51,18 @@ def horas():
 
     df.to_excel("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\horarios\\horarios.xlsx", engine = "openpyxl")
 
+def ingre_actividad():
+
+    pd.read_excel()
 
 
 def main():
 
     crear_df()
 
-    horas()
+    def_horas()
+
+
 
 
 

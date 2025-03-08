@@ -41,13 +41,13 @@ def Pasar_Listas_txt(Lista_nombres, Lista_apellidos, cant_pers):
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 def Crear_txt():
-     
+
     Ruta_Archivo = Path("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\Archivo.txt")
 
     if Ruta_Archivo.exists():
 
         print("el archivo existe")
-         
+
     else:
 
         with open("C:\\Users\\bauti\\OneDrive\\Documentos\\GitHub\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\Problemas_archivos\\Archivo.txt","w", encoding= "UTF-8") as Archivo:
