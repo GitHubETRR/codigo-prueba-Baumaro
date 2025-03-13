@@ -3,24 +3,6 @@ import pandas as pd
 from pathlib import Path
 
 
-
-
-        
-
-
-def main():
-
-    apagar = False
-
-    MB.bienvenida()
-
-    while apagar == False:
-
-
-
-
-
-
 class Producto():
 
     def __init__(self, Nombre, Precio, Categoria, Codigo):
@@ -29,11 +11,13 @@ class Producto():
         self.Precio = Precio
         self.Categoria = Categoria
         self.Codigo = Codigo
-    def Comprar():
+
+
+    def Comprar(self):
 
         print(f"Has comprado el producto {self.Nombre} Codigo: {self.Codigo}")
 
-    def Devolucion():
+    def Devolucion(self):
 
         print(f"Has devuelto el producto {self.Nombre} Codigo: {self.Codigo}")
 
@@ -45,11 +29,11 @@ class Disp_electronico(Producto):
         self.Consumo = Consumo
         self.Tamaño = Tamaño
 
-    def Turn_ON():
+    def Turn_ON(self):
 
         print(f"El Dispositivo {self.Nombre} se ha encendido")
 
-    def Turn_OFF():
+    def Turn_OFF(self):
 
         print(f"El Dispositivo {self.Nombre} se ha apagado")
 
@@ -63,26 +47,62 @@ class Moda(Producto):
 
 class Consumibles(Producto):
 
-    def __init__(self, Nombre, Precio, Categoria, Codigo,):
+    def __init__(self, Nombre, Precio, Categoria, Codigo, Fecha_de_vencimiento, Tipo, Fecha_de_enbasado, Tac, Sin_Lactosa):
         super().__init__(Nombre, Precio, Categoria, Codigo)
-
-
-
-class Arte(Producto):
-
-    def __init__(self, Nombre, Precio, Categoria, Año, Tipo):
-        super().__init__(Nombre, Precio, Categoria)
-        self.Año = Año
+        self.Fecha_de_vencimiento = Fecha_de_vencimiento
+        self.Fecha_de_enbasado = Fecha_de_enbasado
         self.Tipo = Tipo
+        self.Sin_Lactosa = Sin_Lactosa
 
-class Marca(Producto):
+class Marca():
 
-    def __init__(self, Nombre, Precio, Categoria, Linea, Año):
-        super().__init__(Nombre, Precio, Categoria)
+    def __init__(self, Nombre_Marca, Linea, Año):
+
+        self.Nombre_Marca = Nombre_Marca
         self.Linea = Linea
         self.Año = Año
 
-class Marca_Electronica(Marca, Disp_electronico):
+class Producto_Electronico(Marca, Disp_electronico):
+
+    def __init__(self, Nombre_Marca, Linea, Año, Nombre, Precio, Categoria, Consumo, Tamaño):
+
+        Marca.__init__(Nombre_Marca, Linea, Año)
+        Disp_electronico.__init__(Nombre, Precio, Categoria, Consumo, Tamaño)
+
+class Producto_Moda(Moda, Marca):
+
+    def __init__(self, Nombre, Precio, Categoria, Talle, Tela, Nombre_Marca, Linea, Año):
+
+        Moda.__init__(Nombre, Precio, Categoria, Talle, Tela)
+        Marca.__init__(self, Nombre_Marca, Linea, Año)
+
+def Crear_Archivo():
+
+    ruta = Path("C:\\Users\\botero\\Desktop\\codigo-prueba-Baumaro\\Lenguajes-electronicos\\Codigos-python\\CODIGOS\\POO\\archivo.csv")
+
+    dicc = { 
+
+        "Electronicos"
+        "Consumibles"
+        "Moda"
+
+
+    }
+
+    if not ruta.exists():
+
+        .to_csv()
+
+
+def main():
+
+    apagar = False
+
+    MB.bienvenida()
+
+    while apagar == False:
+
+
 
 
 if __name__ == "__main__":
